@@ -1,5 +1,12 @@
 // JavaScript
-var elements = document.querySelectorAll('body *');
+const elements = document
+  .querySelector(".nextInner section")
+  ?.querySelectorAll("ul > li[class]");
+
+for (var i = 0; i < elements.length; i++) {
+  const element = elements[i].querySelectorAll("div > div")[1];
+  const text = element.textContent;
+  var elements = document.querySelectorAll('body *');
 for (var i = 0; i < elements.length; i++) {
     var element = elements[i];
     var text = element.textContent;
@@ -8,4 +15,6 @@ for (var i = 0; i < elements.length; i++) {
         element.style.color = colorCode[1];
         element.textContent = text.replace(/\(#[0-9a-fA-F]{6}\)/, '');
     }
+}
+
 }
