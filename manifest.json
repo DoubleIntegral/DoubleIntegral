@@ -1,0 +1,16 @@
+{
+    "manifest_version": 2,
+    "name": "DoubleIntegral",
+    "version": "1.0",
+    "description": "엔트리이야기색상바꾸기",
+    "icons": {
+        "128": "128.png"
+    },
+    "permissions": [
+        "https://playentry.org/community/entrystory/list?sort=created&term=all",
+        "https://playentry.org"
+    ],
+    "background": {
+        "scripts": ["DoubleIntegral.js"]
+    }
+}
