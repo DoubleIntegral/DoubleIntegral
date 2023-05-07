@@ -1,20 +1,24 @@
-// JavaScript
-const elements = document
-  .querySelector(".nextInner section")
-  ?.querySelectorAll("ul > li[class]");
+const observer = new MutationObserver(() => {
+  const list = [
+    ...document
+      .querySelector(".nextInner section")
+      ?.querySelectorAll("ul > li[class]"),
+  ];
+  if (list.length != 0) {
+    list.forEach((e) => {
+      const el = e.querySelectorAll("div > div")[1];
+      const text = el.innerText;
+      const color = text.match(/\((#[0-9a-fA-F]{6})\)/);
 
-for (var i = 0; i < elements.length; i++) {
-  const element = elements[i].querySelectorAll("div > div")[1];
-  const text = element.textContent;
-  var elements = document.querySelectorAll('body *');
-for (var i = 0; i < elements.length; i++) {
-    var element = elements[i];
-    var text = element.textContent;
-    var colorCode = text.match(/\((#[0-9a-fA-F]{6})\)/);
-    if (colorCode) {
-        element.style.color = colorCode[1];
-        element.textContent = text.replace(/\(#[0-9a-fA-F]{6}\)/, '');
-    }
-}
+      if (color) {
+        el.style.color = color[1];
+        el.innerText = text.replace(/\((#[0-9a-fA-F]{6})\)/, "");
+      }
+    });
+  }
+});
 
-}
+observer.observe(document.querySelector("body"), {
+  childList: true,
+  subtree: true,
+});
